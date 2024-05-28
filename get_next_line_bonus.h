@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atok <atok@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:01:52 by atok              #+#    #+#             */
-/*   Updated: 2023/03/12 19:11:13 by atok             ###   ########.fr       */
+/*   Updated: 2022/11/14 12:37:17 by atok             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdint.h>
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
@@ -30,6 +25,9 @@ char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
 
+/* # ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif */
 
 /* can put it inbetween # & char
 but for moulinet sake, commented it out coz

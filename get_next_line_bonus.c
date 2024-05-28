@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atok <atok@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:01:31 by atok              #+#    #+#             */
-/*   Updated: 2023/03/12 19:13:01 by atok             ###   ########.fr       */
+/*   Updated: 2022/11/15 17:54:47 by atok             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 /* char *joinfree(char *str, char *tmpstr)
 {
@@ -99,16 +99,16 @@ char	*remaining(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[_SC_OPEN_MAX];
 	char		*line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	str = read_file(fd, str);
-	if (str == NULL)
+	str[fd] = read_file(fd, str[fd]);
+	if (str[fd] == NULL)
 		return (NULL);
-	line = get_line(str);
-	str = remaining(str);
+	line = get_line(str[fd]);
+	str[fd] = remaining(str[fd]);
 	return (line);
 }
 
@@ -117,18 +117,4 @@ char	*get_next_line(int fd)
 0 = read nothing
 >0 = read amount */
 
-/* BUFFER_SIZE = read size...
-the bigger the faster
-if not it will keep loopinf till it hits \n */
-
-/* 1st to read the file/copy from .txt to our founction/calloc
-loop read buffer size amount & joining old and new str till '\n'
-tmpstr is free outside the loop becase the buffer constantly 
-reallocate that ammount in to tmpstr
-
-imagine from collum to row
-2nd output the frist 
-3rd stored the res of the line in static char
-repeat */
-
-/* can use .c and .h file as the fd */
+/* _SC_OPEN_MAX = 1024 files id the default open life limit */
